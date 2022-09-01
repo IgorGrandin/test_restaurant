@@ -11,7 +11,8 @@ public:
     ~TestQRestaurant();
 
 private slots:
-    void test_case1();
+    void openFile();
+    void splitStringText();
 
 };
 
@@ -25,7 +26,13 @@ TestQRestaurant::~TestQRestaurant()
 
 }
 
-void TestQRestaurant::test_case1()
+void TestQRestaurant::openFile()
+{
+    QFile file("../restaurant_hours/restaurant_hours.csv");
+    QCOMPARE(file.open(QIODevice::ReadOnly), true);
+}
+
+void TestQRestaurant::splitStringText()
 {
 
 }
