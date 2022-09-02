@@ -12,7 +12,8 @@ public:
 
 private slots:
     void openFile();
-    void splitStringText();
+    void replaceStringText();
+    void timeFromString();
 
 };
 
@@ -32,9 +33,20 @@ void TestQRestaurant::openFile()
     QCOMPARE(file.open(QIODevice::ReadOnly), true);
 }
 
-void TestQRestaurant::splitStringText()
+void TestQRestaurant::replaceStringText()
 {
+    QString initialString = "Hello World!";
+    QString testString = "Hello\n";
+    testString.replace("\n", (" World!"));
+    QCOMPARE(testString, initialString);
+}
 
+void TestQRestaurant::timeFromString()
+{
+    QString initialTime = "1:20";
+    QTime qTime = QTime(1,20);
+    QTime strTime = QTime::fromString(initialTime, "H:mm");
+    QCOMPARE(strTime, qTime);
 }
 
 QTEST_APPLESS_MAIN(TestQRestaurant)
